@@ -1,4 +1,5 @@
 import re
+import time
 import requests
 import xml.etree.ElementTree as ET
 import yfinance as yf
@@ -15,6 +16,9 @@ def scrape_reddit():
         try:
             url = f"https://www.reddit.com/r/{sub}/.rss"
             r = requests.get(url, headers={"User-Agent": BROWSER_UA}, timeout=10)
+            if r.status_code == 429:
+                time.sleep(5)
+                r = requests.get(url, headers={"User-Agent": BROWSER_UA}, timeout=10)
             r.raise_for_status()
             root = ET.fromstring(r.text)
             for entry in root.findall(f"{{{ATOM_NS}}}entry")[:25]:
@@ -35,6 +39,7 @@ def scrape_reddit():
             print(f"Reddit r/{sub}: {len(root.findall(f'{{{ATOM_NS}}}entry'))} posts")
         except Exception as e:
             print(f"Reddit r/{sub} failed: {e}")
+        time.sleep(2)
     return posts
 
 
