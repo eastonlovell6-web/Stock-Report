@@ -1,7 +1,7 @@
 import os
 
-PORTFOLIO_TICKERS = ["POET", "SLS", "DRAM", "SOFI", "ZETA", "NBIS"]
-WATCHLIST_TICKERS = ["IONQ"]
+PORTFOLIO_TICKERS = ["DRAM", "SOFI", "ZETA", "NBIS", "NOW", "CRWV", "AAOI", "NFLX", "HUT", "INTC"]
+WATCHLIST_TICKERS = ["IONQ", "SMCI", "UBER", "OUST", "OKLO"]
 RECIPIENT_EMAIL = "eastonlovell6@gmail.com"
 SENDER_EMAIL = "eastonlovell6@gmail.com"
 
